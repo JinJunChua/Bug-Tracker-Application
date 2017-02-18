@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        @if (Session["UserID"] != null)
+        {
+            <h2 class="page-header">Welcome, @Session["UserID"].ToString()!</h2>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-10">
+        <h3>Projects</h3>
+    </div>
+    <div class="col-lg-1">
+        <button class="btn btn-default" type="button" style="margin:16px;"> 
+            Add New Project  <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="thumbnail" style="
+    border-left-width: 1px;
+    padding-left: 20px;
+    padding-right: 20px;">
+            <h4>Project A</h4>
+            <br />
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <br />
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">View more &raquo;</a></p>
+            <span class="label label-info">Programmer1</span>
+            <span class="label label-warning">Programmer2</span>
+            <span class="label label-danger">Programmer3</span>
+            <br />
+            <br />
+        </div>
+       </div>
+    <div class="col-md-4">
+        <div class="thumbnail" style="
+    border-left-width: 1px;
+    padding-left: 20px;
+    padding-right: 20px;">
+            <h4>Project B</h4>
+            <br />
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">View more &raquo;</a></p>
+            <span class="label label-default">Programmer1</span>
+            <span class="label label-primary">Programmer2</span>
+            <span class="label label-success">Programmer3</span>
+            <br/>
+            <br />
+         </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="thumbnail" style="
+    border-left-width: 1px;
+    padding-left: 10px;
+    padding-right: 10px;">
+            <h4>Project C</h4>
+            <br />
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">View more &raquo;</a></p>
+
+            <span class="label label-info">Programmer1</span>
+            <span class="label label-warning">Programmer2</span>
+            <span class="label label-danger">Programmer3</span>
+            <br/>
+            <br />
+        </div>
+        </div>
+</div>
