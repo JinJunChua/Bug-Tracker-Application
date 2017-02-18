@@ -176,11 +176,10 @@
     <Compile Include="DAL\CaseGateway.cs" />
     <Compile Include="DAL\CRUDGateway.cs" />
     <Compile Include="DAL\ICRUDGateway.cs" />
+    <Compile Include="DAL\IUserGateway.cs" />
     <Compile Include="DAL\UserGateway.cs" />
     <Compile Include="DAL\BugGateway.cs" />
     <Compile Include="DAL\BugTrackerApplicationContext.cs" />
-    <Compile Include="DAL\DataGateway.cs" />
-    <Compile Include="DAL\IDataGateway.cs" />
     <Compile Include="DAL\ProjectGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
