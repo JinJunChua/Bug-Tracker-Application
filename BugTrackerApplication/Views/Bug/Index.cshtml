@@ -11,9 +11,9 @@
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.AssignedToCase.status)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.projectName)
         </th>
@@ -49,9 +49,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.AssignedToCase.status)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.projectName)
         </td>

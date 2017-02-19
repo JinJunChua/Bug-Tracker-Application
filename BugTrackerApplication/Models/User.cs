@@ -12,8 +12,8 @@ namespace BugTrackerApplication.Models
         public String password { get; set; }
         public String role { get; set; }
 
-        //public int? AssignedProject_projectID { get; set; }
-        public virtual Project AssignedProject { get; set; }
+       //public int? AssignedProject_projectID { get; set; }
+        //public virtual Project AssignedProject { get; set; }
 
         public virtual ICollection<UserAssignedProject> listOfAssignedProject { get; set; } // for the programmer
         public virtual ICollection<Project> manageProjects { get; set; }

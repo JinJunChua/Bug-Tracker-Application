@@ -55,7 +55,7 @@ namespace BugTrackerApplication.DAL
 
             // ------- Foreign Keys ----------- //
             modelBuilder.Entity<Bug>()// class that has the many relationship
-                .HasRequired(a => a.AssignedToCase) // class that has the one relation
+                .HasOptional(a => a.AssignedToCase) // class that has the one relation
                 .WithMany(b => b.listOfBugs)
                 .HasForeignKey(c => c.caseID).WillCascadeOnDelete(false); // Foreign key id  
 
@@ -73,6 +73,8 @@ namespace BugTrackerApplication.DAL
                 .HasRequired(a => a.UserInvolvedProject) // class that has the one relation
                 .WithMany(b => b.listOfAssignedProject) // name of the IEnnumerablensrjgndrj
                 .HasForeignKey(c => c.projectID).WillCascadeOnDelete(false); // Foreign key id
+
+
 
             modelBuilder.Entity<Case>() // class that has the many relationship
                 .HasRequired(a => a.Programmer) // class that has the one relation

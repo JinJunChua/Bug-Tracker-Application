@@ -141,8 +141,6 @@ C:\Users\fried\School\Trimester 2.2\ICT 2106 - Software Design\Project\fatgirl93
 C:\Users\fried\School\Trimester 2.2\ICT 2106 - Software Design\Project\fatgirl93\BugTrackerApplication\BugTrackerApplication\obj\Debug\BugTrackerApplication.dll
 C:\Users\fried\School\Trimester 2.2\ICT 2106 - Software Design\Project\fatgirl93\BugTrackerApplication\BugTrackerApplication\obj\Debug\BugTrackerApplication.pdb
 C:\Users\fried\School\GitHub\Bug-Tracker-Application\BugTrackerApplication\obj\Debug\BugTrackerApplication.csprojResolveAssemblyReference.cache
-C:\Users\fried\School\GitHub\Bug-Tracker-Application\BugTrackerApplication\obj\Debug\BugTrackerApplication.Migrations.InitialCreate.resources
-C:\Users\fried\School\GitHub\Bug-Tracker-Application\BugTrackerApplication\obj\Debug\BugTrackerApplication.csproj.GenerateResource.Cache
 C:\Users\fried\School\GitHub\Bug-Tracker-Application\BugTrackerApplication\obj\Debug\BugTrackerApplication.dll
 C:\Users\fried\School\GitHub\Bug-Tracker-Application\BugTrackerApplication\obj\Debug\BugTrackerApplication.pdb
 C:\Users\fried\School\GitHub\Bug-Tracker-Application\BugTrackerApplication\bin\roslyn\csc.exe

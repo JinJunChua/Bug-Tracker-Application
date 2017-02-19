@@ -18,81 +18,33 @@
     <!-- Custom Fonts -->
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-
 </head>
 <body>
 
     <div id="wrapper">
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Bug Tracker</a>
-            </div>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- Top Navigation: Right Menu  nav navbar-right navbar-top-links-->
-            <ul class="nav navbar-right top-nav">
-             
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
-                        <li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- Sidebar -->
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="button">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#" class="active"><i class="glyphicon glyphicon-home">   </i>&nbsp;&nbsp;&nbsp;Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index", "Users")" class="active"><i class="glyphicon glyphicon-list-alt">     </i>&nbsp;&nbsp;&nbsp;View All Projects  </a>
-                        </li>
-                        <li>
-                            <a href="#" class="active"><i class="glyphicon glyphicon-user">   </i>&nbsp;&nbsp;&nbsp;Manage Users</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        @Html.Partial("_Header");
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 
                 <div class="container body-content">
                     <div class="row">
-                      
+                      @RenderBody()
                     </div>
-                    @RenderBody()
-                    <hr />
-                    <footer>
+                    
+                    
+                    @*<footer>
                         <p>&copy; @DateTime.Now.Year - SIT ICT2106 - BugTrackerApplication</p>
-                    </footer>
+                    </footer>*@
                 </div>
+                @Html.Partial("_Footer")
                 <!-- ... Your content goes here ... -->
             </div>
         </div>
+       
     </div>
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

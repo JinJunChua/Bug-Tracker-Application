@@ -19,7 +19,7 @@ namespace BugTrackerApplication.Models
         public DateTime? createdDate { get; set; }
         public DateTime? updatedDate { get; set; }
         public DateTime? dueDate { get; set; }
-        public int caseID { get; set; }
+        public int? caseID { get; set; }
 
         public virtual Case AssignedToCase { get; set; }
         //public virtual Project Assigned

@@ -1,6 +1,5 @@
 namespace BugTrackerApplication.Migrations
 {
-    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -10,11 +9,10 @@ namespace BugTrackerApplication.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "BugTrackerApplication.Models.ApplicationDbContext";
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(BugTrackerApplication.DAL.BugTrackerApplicationContext db)
+        protected override void Seed(BugTrackerApplication.DAL.BugTrackerApplicationContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -28,27 +26,6 @@ namespace BugTrackerApplication.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            //db.User.Add(new User()
-            //{
-            //    password = "password",
-            //    role = "Customer",
-            //    userName = "Help pls",
-            //});
-
-            //db.Bug.Add(new Bug()
-            //{
-            //    attachments = string.Empty,
-            //    bugDesc = "a bug desc",
-            //    bugID = 1,
-            //    comments = "aadsf",
-            //    createdDate = new DateTime(),
-            //    customerID = 1,
-            //    dueDate = new DateTime(),
-            //    priority = "High",
-            //    projectName = "A prject",
-            //    status = "Status",
-            //    updatedDate = new DateTime()
-            //});
         }
     }
 }
