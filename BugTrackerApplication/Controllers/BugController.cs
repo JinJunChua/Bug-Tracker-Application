@@ -10,15 +10,22 @@ namespace BugTrackerApplication.Controllers
 {
     public class BugController : CRUDController<Bug>
     {
+        BugGateway bdb = new BugGateway();
         public BugController()
         {
-            db = new BugGateway();
+            db = new BugGateway();            
         }
 
         //Customer View
-        public ActionResult Index()
+        public ActionResult Index(User user)
         {
-            return View(db.SelectAll());
+            return View(bdb.getUserBug(user));
+        }
+
+        // GET: CRUD/Create
+        public ActionResult Create()
+        {
+            return View();
         }
     }
 }

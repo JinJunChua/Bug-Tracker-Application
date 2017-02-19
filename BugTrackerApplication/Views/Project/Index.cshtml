@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BugTrackerApplication.Models.Project>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+    <input type="hidden" value="@ViewBag.id" id="id" />
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Manager.userName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectVersion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.updatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.createdDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.updatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.endDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manager.userName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectVersion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.updatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.updatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.endDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.projectID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.projectID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.projectID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -255,12 +255,16 @@
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Project\Details.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Case\Index.cshtml" />
+    <Content Include="Views\Case\ListOfBugs.cshtml" />
+    <Content Include="Views\Case\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Bug\" />
-    <Folder Include="Views\Case\" />
-    <Folder Include="Views\Project\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

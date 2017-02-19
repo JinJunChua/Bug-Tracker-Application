@@ -1,21 +1,24 @@
 ﻿@model IEnumerable<BugTrackerApplication.Models.Bug>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ListOfBugs";
 }
 
-<h2>Index</h2>
+<h2>ListOfBugs</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.AssignedToCase.status)
-        </th>*@
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.projectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customerID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.bugDesc)
@@ -46,9 +49,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        @*<td>
+        <td>
             @Html.DisplayFor(modelItem => item.AssignedToCase.status)
-        </td>*@
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.projectName)
         </td>

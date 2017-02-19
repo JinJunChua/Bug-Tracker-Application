@@ -23,14 +23,10 @@ namespace BugTrackerApplication.Controllers
             return View(db.SelectById(id));
         }
 
-        // GET: CRUD/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
+        
         // POST: CRUD/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(T obj)
         {
             // TODO: Add insert logic here

@@ -9,24 +9,24 @@ namespace BugTrackerApplication.DAL
     public class CRUDGateway<T> : ICRUDGateway<T> where T : class
     {
         internal BugTrackerApplicationContext db = new BugTrackerApplicationContext();
-        internal DbSet<T> data = null;
+        internal DbSet<T> bugdata = null;
 
         public CRUDGateway()
         {
-            this.data = db.Set<T>();
+            this.bugdata = db.Set<T>();
         }
 
         public T Delete(int? id)
         {
-            T obj = data.Find(id);
-            data.Remove(obj);
+            T obj = bugdata.Find(id);
+            bugdata.Remove(obj);
             db.SaveChanges();
             return obj;
         }
 
         public void Insert(T obj)
         {
-            data.Add(obj);
+            bugdata.Add(obj);
             db.SaveChanges();
         }
 
@@ -38,12 +38,12 @@ namespace BugTrackerApplication.DAL
         public IEnumerable<T> SelectAll()
         {
             //db.Bug.SqlQuery("select * from dbo.Bug");
-            return data.ToList();
+            return bugdata.ToList();
         }
 
         public T SelectById(int? id)
         {
-            return data.Find(id);
+            return bugdata.Find(id);
         }
         
         public void Update(T obj)

@@ -33,6 +33,8 @@ namespace BugTrackerApplication.Controllers
         public ActionResult Login(String username, String password)
         {
             var obj = userGateway.Login(username, password);
+            User user = db.User.Where(x => x.userName == username).FirstOrDefault();
+
             if(obj != null)
             {
                 switch (obj.role)
@@ -40,20 +42,22 @@ namespace BugTrackerApplication.Controllers
                     case "Admin":
                         Session["UserID"] = obj.userName.ToString();
                         Session["Role"] = obj.role.ToString();
-                        return RedirectToAction("Index", "Home");
-                        break;
+                        Session["id"] = obj.userID.ToString(); 
+                        
+                        return RedirectToAction("Index", "Project", user);
+                        //break;
 
                     case "Customer":
                         Session["UserID"] = obj.userName.ToString();
                         Session["Role"] = obj.role.ToString();
-                        return RedirectToAction("Index", "Bug");
-                        break;
+                        return RedirectToAction("Index", "Bug", user);
+                        //break;
 
                     case "Programmer":
                         Session["UserID"] = obj.userName.ToString();
                         Session["Role"] = obj.role.ToString();
-                        return RedirectToAction("Index", "Case");
-                        break;
+                        return RedirectToAction("Index", "Case", user);
+                        //break;
                 }
                 //if (obj.role == "Admin")
                 //{

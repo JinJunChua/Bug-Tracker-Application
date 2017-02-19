@@ -26,6 +26,7 @@ namespace BugTrackerApplication.Models
         public virtual ICollection<UserAssignedProject> listOfAssignedUsers { get; set; }
         public virtual User Manager { get; set; }
         public int createdBy { get; set; } //by which manager
+        
 
         public Project()
         {

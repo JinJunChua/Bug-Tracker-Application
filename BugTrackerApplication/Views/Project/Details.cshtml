@@ -1,0 +1,83 @@
+﻿@model BugTrackerApplication.Models.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Manager.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manager.userName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.projectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.projectDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.projectVersion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectVersion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.createdDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createdDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("List Of Cases", "CaseIndex", new { id = Model}) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.projectID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
