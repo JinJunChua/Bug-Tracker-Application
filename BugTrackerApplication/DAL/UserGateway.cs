@@ -23,9 +23,19 @@ namespace BugTrackerApplication.DAL
             if (newObj != null)
             {
                 string role = newObj.role;
+                int id = newObj.userID;
                 return newObj;
             }
             return new User();
+        }
+
+        public int getUserId(string username)
+        {
+            var findUserId = db.User.Where(x => x.userName.Equals(username)).FirstOrDefault();
+            if (findUserId != null)
+                return findUserId.userID;
+            else
+                return 0;
         }
     }
 }

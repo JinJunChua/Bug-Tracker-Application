@@ -24,41 +24,40 @@ namespace BugTrackerApplication.Controllers
             //wait ah
             return View(pdb.getProjectData(user)); //try
         }
-
+        
         //Manager - Project/Index > click on Project Details > Click on Cases
         public ActionResult CaseIndex(Project project)
         {
             return View(pdb.getListOfCases(project));
         }
 
-        //public ActionResult Create(User user)
-        //{
-        //    Project project = new Project();
-        //    project.createdBy = (int)user.userID;
-        //    return View(project);
-        //}
-
-        public ActionResult Create(User user)
+        public ActionResult Create(int id)
         {
-            Project p = new Project();
-            string tempId = Session["id"].ToString();
-
-            p.createdBy = user.userID;
-            return View(p);
+            Project project = new Project();
+            project.createdBy = id;
+            return View(project);
         }
 
-        
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(Project p)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Project obj)
+        {
+            // TODO: Add insert logic here
+            if (ModelState.IsValid)
+            {
+                db.Insert(obj);
+                TempData["project_obj"] = obj.Manager;
+                obj.Manager = (User)TempData["project_obj"];
+                return RedirectToAction("Index", "Project", obj.Manager);
+            }
+            
+            return View(obj.Manager);
+        }
+        //public ActionResult Create()
         //{
-        //    //try comment out this whole section? cuz inherit from CRUDController
-        //    //i think you can continue pass the value here
-        //    //User user = new User();
-        //    //p.createdBy = (int)Session["id"];//try
-        //    return View(p);
-
+        //    Project project = new Project();
+        //    project.createdBy = (int)Session["id"];
+        //    return View(project);
         //}
-        
     }
 }

@@ -23,9 +23,9 @@ namespace BugTrackerApplication.Controllers
         }
 
         //Programmer - Case/Index > Click on Case > Case/Details > Click on Bugs
-        public ActionResult ListOfBugs(Case cases)
+        public ActionResult ListOfBugs(int caseID)
         {
-            return View(cdb.getListOfBugs(cases));
+            return View(cdb.getListOfBugs(caseID));
         }
 
         // GET: CRUD/Create

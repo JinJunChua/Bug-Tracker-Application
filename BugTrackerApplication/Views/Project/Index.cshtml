@@ -6,7 +6,11 @@
 
 <h2>Index</h2>
     <input type="hidden" value="@ViewBag.id" id="id" />
-    @Html.ActionLink("Create New", "Create")
+@if (Session["UserID"] != null)
+{
+    <h2 class="page-header">Welcome, @Session["id"].ToString()!</h2>
+}
+    @Html.ActionLink("Create New", "Create", new { id=Session["id"] })
 </p>
 <table class="table">
     <tr>

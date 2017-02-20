@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BugTrackerApplication.DAL;
 using BugTrackerApplication.Models;
+using System.Web.Services;
 
 namespace BugTrackerApplication.Controllers
 {
@@ -30,6 +31,7 @@ namespace BugTrackerApplication.Controllers
 
         
         [HttpPost]
+        [WebMethod(EnableSession = true)]
         public ActionResult Login(String username, String password)
         {
             var obj = userGateway.Login(username, password);
@@ -42,8 +44,8 @@ namespace BugTrackerApplication.Controllers
                     case "Admin":
                         Session["UserID"] = obj.userName.ToString();
                         Session["Role"] = obj.role.ToString();
-                        Session["id"] = obj.userID.ToString(); 
-                        
+                        Session["id"] = obj.userID;
+                        Console.WriteLine("id : " + Session["id"].ToString());
                         return RedirectToAction("Index", "Project", user);
                         //break;
 

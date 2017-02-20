@@ -23,22 +23,22 @@ namespace BugTrackerApplication.Controllers
             return View(db.SelectById(id));
         }
 
-        
-        // POST: CRUD/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(T obj)
-        {
-            // TODO: Add insert logic here
-            if (ModelState.IsValid)
-            {
-                db.Insert(obj);
-                return RedirectToAction("Index");
-            }
 
-            //return View(booking);            
-            return View(obj);
-        }
+        //// POST: CRUD/Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(T obj)
+        //{
+        //    TODO: Add insert logic here
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Insert(obj);
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View(booking);
+        //    return View(obj);
+        //}
 
         // GET: CRUD/Edit/5
         public ActionResult Edit(int id)

@@ -9,6 +9,8 @@ namespace BugTrackerApplication.DAL
 {
     interface IUserGateway<User> where User : class
     {
+        //User Login(string username, string password);
         User Login(string username, string password);
+        int getUserId(string username);
     }
 }

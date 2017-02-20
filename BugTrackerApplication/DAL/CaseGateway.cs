@@ -34,9 +34,9 @@ namespace BugTrackerApplication.DAL
 
         // Programmer > Index > Case OR
         // PM > Index > Project > Case
-        public IEnumerable<Bug> getListOfBugs(Case cases)
+        public IEnumerable<Bug> getListOfBugs(int caseID)
         {
-            Case c = casedata.Where(x => x.caseID == cases.caseID).FirstOrDefault();
+            Case c = casedata.Where(x => x.caseID == caseID).FirstOrDefault();
             return c.listOfBugs.ToList();
         }
     }
