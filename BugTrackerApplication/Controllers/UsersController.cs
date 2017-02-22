@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BugTrackerApplication.DAL;
+
 using BugTrackerApplication.Models;
 using System.Web.Services;
 
@@ -35,7 +36,6 @@ namespace BugTrackerApplication.Controllers
         public ActionResult Login(String username, String password)
         {
             var obj = userGateway.Login(username, password);
-            User user = db.User.Where(x => x.userName == username).FirstOrDefault();
 
             if(obj != null)
             {
@@ -44,29 +44,21 @@ namespace BugTrackerApplication.Controllers
                     case "Admin":
                         Session["UserID"] = obj.userName.ToString();
                         Session["Role"] = obj.role.ToString();
-                        Session["id"] = obj.userID;
-                        Console.WriteLine("id : " + Session["id"].ToString());
-                        return RedirectToAction("Index", "Project", user);
-                        //break;
+                        System.Web.HttpContext.Current.Session["userID"] = obj.userID; 
+                        return RedirectToAction("Index", "Project");
 
                     case "Customer":
                         Session["UserID"] = obj.userName.ToString();
                         Session["Role"] = obj.role.ToString();
-                        return RedirectToAction("Index", "Bug", user);
-                        //break;
+                        System.Web.HttpContext.Current.Session["userID"] = obj.userID;
+                        return RedirectToAction("Index", "Bug");
 
                     case "Programmer":
                         Session["UserID"] = obj.userName.ToString();
                         Session["Role"] = obj.role.ToString();
-                        return RedirectToAction("Index", "Case", user);
-                        //break;
-                }
-                //if (obj.role == "Admin")
-                //{
-                //    Session["UserID"] = obj.userName.ToString();
-                //    Session["Role"] = obj.role.ToString();
-                //    return RedirectToAction("Index", "Home");
-                //}              
+                        System.Web.HttpContext.Current.Session["userID"] = obj.userID;
+                        return RedirectToAction("Index", "Case");
+                }          
 
             }
             return View();

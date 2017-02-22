@@ -9,15 +9,15 @@ namespace BugTrackerApplication.DAL
 {
     public class BugGateway : CRUDGateway<Bug>
     {
-        internal new DbSet<Bug> bugdata = null;
+        internal DbSet<Bug> bugdata = null;
 
         public BugGateway()
         {
             this.bugdata = db.Set<Bug>();
         }
-        public IEnumerable<Bug> getUserBug(User user)
+        public IEnumerable<Bug> getUserBug(int id)
         {
-            var allBugsMappedToUser = bugdata.Where(x => x.customerID == user.userID);
+            var allBugsMappedToUser = bugdata.Where(x => x.customerID == id);
             return allBugsMappedToUser.ToList();
         }
     }

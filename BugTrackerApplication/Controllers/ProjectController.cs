@@ -11,27 +11,27 @@ namespace BugTrackerApplication.Controllers
     public class ProjectController : CRUDController<Project>
     {
         ProjectGateway pdb = new ProjectGateway();
+        CaseGateway cdb = new CaseGateway();
+        private int id = (int)System.Web.HttpContext.Current.Session["userID"];
         public ProjectController()
         {
             db = new ProjectGateway();
         }
 
         //Manager - Project/Index
-        public ActionResult Index(User user)
-        {//ok wait
-            IEnumerable<Project> temp = pdb.getProjectData(user);
-            
-            //wait ah
-            return View(pdb.getProjectData(user)); //try
+        public ActionResult Index()
+        {            
+            IEnumerable<Project> temp = pdb.getProjectData(id);
+            return View(pdb.getProjectData(id)); 
         }
         
         //Manager - Project/Index > click on Project Details > Click on Cases
-        public ActionResult CaseIndex(Project project)
+        public ActionResult CaseIndex(int pid)
         {
-            return View(pdb.getListOfCases(project));
+            return View(pdb.getListOfCases(pid));
         }
 
-        public ActionResult Create(int id)
+        public ActionResult CreateProject()
         {
             Project project = new Project();
             project.createdBy = id;
@@ -40,24 +40,40 @@ namespace BugTrackerApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Project obj)
+        public ActionResult CreateProject(Project obj)
         {
-            // TODO: Add insert logic here
+            //TODO: Add insert logic here
             if (ModelState.IsValid)
             {
-                db.Insert(obj);
-                TempData["project_obj"] = obj.Manager;
-                obj.Manager = (User)TempData["project_obj"];
-                return RedirectToAction("Index", "Project", obj.Manager);
+                pdb.Insert(obj);
+                return RedirectToAction("Index");
             }
-            
-            return View(obj.Manager);
+
+            return View(obj);
         }
-        //public ActionResult Create()
-        //{
-        //    Project project = new Project();
-        //    project.createdBy = (int)Session["id"];
-        //    return View(project);
-        //}
+
+        public ActionResult CreateCase(int pid)
+        {
+            Case c = new Case();
+            Project p = new Project(); 
+            c.projectID = pid; 
+            c.pmID = id; //User that is logged on
+            return View(c);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateCase(Case obj)
+        {
+            //TODO: Add insert logic here
+            if (ModelState.IsValid)
+            {
+                cdb.Insert(obj);
+                return RedirectToAction("CaseIndex", new { pid = obj.projectID });
+            }
+
+            return View(obj);
+        }
+
     }
 }

@@ -1,11 +1,12 @@
 ﻿@model BugTrackerApplication.Models.Case
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Delete";
 }
 
-<h2>Details</h2>
+<h2>Resolve Case</h2>
 
+<h3>Are you sure you want to resolve this case?</h3>
 <div>
     <h4>Case</h4>
     <hr />
@@ -43,19 +44,13 @@
         </dd>
 
     </dl>
-</div>
-<p>
-    @Html.ActionLink("List Of Bugs", "ListOfBugs", new { cid = Model.caseID}) |
-    @Html.ActionLink("Edit", "Edit", new { id = Model.caseID }) |
-    
-    @if (@System.Web.HttpContext.Current.Session["role"].Equals("Programmer"))
-    {
-        @Html.ActionLink("Resolve Case", "Delete", new { id = Model.caseID }) 
-        @Html.ActionLink("| Back to List", "Index")
-    }
-    @if (@System.Web.HttpContext.Current.Session["role"].Equals("Admin"))
-    {
-        @Html.ActionLink("Back to List", "CaseIndex", "Project", new { pid = Model.projectID }, null)
-    }
 
-</p>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Resolve" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -4,13 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-    <input type="hidden" value="@ViewBag.id" id="id" />
-@if (Session["UserID"] != null)
-{
-    <h2 class="page-header">Welcome, @Session["id"].ToString()!</h2>
-}
-    @Html.ActionLink("Create New", "Create", new { id=Session["id"] })
+<h2>Project Manager -- List of Projects</h2>
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>

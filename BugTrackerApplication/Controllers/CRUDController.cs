@@ -1,4 +1,5 @@
 ﻿using BugTrackerApplication.DAL;
+using BugTrackerApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,6 @@ namespace BugTrackerApplication.Controllers
     {
         protected CRUDGateway<T> db;
 
-        // GET: CRUD
-        //public ActionResult Index()
-        //{
-        //    return View(db.SelectAll());
-        //}
-
         // GET: CRUD/Details/5
         public ActionResult Details(int id)
         {
@@ -24,21 +19,21 @@ namespace BugTrackerApplication.Controllers
         }
 
 
-        //// POST: CRUD/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(T obj)
-        //{
-        //    TODO: Add insert logic here
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Insert(obj);
-        //        return RedirectToAction("Index");
-        //    }
+        // POST: CRUD/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(T obj)
+        {
+            //TODO: Add insert logic here
+            if (ModelState.IsValid)
+            {
+                db.Insert(obj);
+                return RedirectToAction("Index");
+            }
+            
+            return View(obj);
+        }
 
-        //    return View(booking);
-        //    return View(obj);
-        //}
 
         // GET: CRUD/Edit/5
         public ActionResult Edit(int id)
@@ -72,7 +67,7 @@ namespace BugTrackerApplication.Controllers
 
         // POST: CRUD/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, User user)
         {
             try
             {

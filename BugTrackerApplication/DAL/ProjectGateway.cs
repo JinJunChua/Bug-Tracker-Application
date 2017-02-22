@@ -9,7 +9,7 @@ namespace BugTrackerApplication.DAL
 {
     public class ProjectGateway : CRUDGateway<Project>
     {
-        internal new DbSet<Project> projectdata = null;
+        internal DbSet<Project> projectdata = null;
 
         public ProjectGateway()
         {
@@ -17,18 +17,20 @@ namespace BugTrackerApplication.DAL
         }
 
         //PM > Index
-        public IEnumerable<Project> getProjectData(User user)
+        public IEnumerable<Project> getProjectData(int id)
         {
-            var displaysProjectThatUserHas = projectdata.Where(x => x.Manager.userID == user.userID);
-            
+            var displaysProjectThatUserHas = projectdata.Where(x => x.Manager.userID == id);            
             return displaysProjectThatUserHas; 
         }
 
         //PM > Index > Details > Cases (list of cases)
-        public IEnumerable<Case> getListOfCases(Project project)
+        public IEnumerable<Case> getListOfCases(int pid)
         {
-            Project p = projectdata.Where(x => x.projectID == project.projectID).FirstOrDefault();
-            return p.listOfCase.ToList();
+            Project p = projectdata.Where(x => x.projectID == pid).FirstOrDefault();
+            if (p != null)
+                return p.listOfCase.ToList();
+            else
+                return null;
         }
 
         

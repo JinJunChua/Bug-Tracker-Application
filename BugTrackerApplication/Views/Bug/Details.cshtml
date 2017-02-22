@@ -101,6 +101,15 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.bugID }) |
-    @Html.ActionLink("Back to List", "Index")
+    
+    @if (@System.Web.HttpContext.Current.Session["role"].Equals("Programmer") || 
+        @System.Web.HttpContext.Current.Session["role"].Equals("Admin"))
+    {
+        @Html.ActionLink("Back to List", "ListOfBugs", "Case", new { cid = Model.caseID}, null) 
+    }
+    @if (@System.Web.HttpContext.Current.Session["role"].Equals("Customer"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.bugID }) 
+        @Html.ActionLink("| Back to List", "Index");
+    }
 </p>

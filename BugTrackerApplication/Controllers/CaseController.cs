@@ -11,27 +11,23 @@ namespace BugTrackerApplication.Controllers
     public class CaseController : CRUDController<Case>
     {
         CaseGateway cdb = new CaseGateway();
+        private int id = (int)System.Web.HttpContext.Current.Session["userID"];
         public CaseController()
         {
             db = new CaseGateway();
         }
 
         //Programmer - Case/Index
-        public ActionResult Index(User user)
+        public ActionResult Index()
         {
-            return View(cdb.getCaseData(user));
+            return View(cdb.getCaseData(id));
         }
 
         //Programmer - Case/Index > Click on Case > Case/Details > Click on Bugs
-        public ActionResult ListOfBugs(int caseID)
+        public ActionResult ListOfBugs(int cid)
         {
-            return View(cdb.getListOfBugs(caseID));
+            return View(cdb.getListOfBugs(cid));
         }
-
-        // GET: CRUD/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        
     }
 }

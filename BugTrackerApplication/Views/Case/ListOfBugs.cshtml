@@ -4,11 +4,8 @@
     ViewBag.Title = "ListOfBugs";
 }
 
-<h2>ListOfBugs</h2>
+<h2>List Of Bugs from [INSERT CASE NAME]</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -83,9 +80,7 @@
             @Html.DisplayFor(modelItem => item.dueDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.bugID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.bugID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.bugID })
+            @Html.ActionLink("Details", "Details", "Bug", new { id=item.bugID }, null) 
         </td>
     </tr>
 }

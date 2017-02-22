@@ -9,7 +9,7 @@ namespace BugTrackerApplication.DAL
 {
     public class CaseGateway : CRUDGateway<Case>
     {
-        internal new DbSet<Case> casedata = null;
+        internal DbSet<Case> casedata = null;
 
         public CaseGateway()
         {
@@ -17,23 +17,15 @@ namespace BugTrackerApplication.DAL
         }
 
         // Programmer > Index
-        public IEnumerable<Case> getCaseData(User user)
+        public IEnumerable<Case> getCaseData(int uid)
         {
-            if(user.role == "Programmer")
-            {
-                var allCaseMappedToUser = casedata.Where(x => x.programmerID == user.userID);
+                var allCaseMappedToUser = casedata.Where(x => x.programmerID == uid);
                 return allCaseMappedToUser;
-            }
-            else //admin
-            {
-                var allCaseMappedToUser = casedata.Where(x => x.pmID == user.userID);
-                return allCaseMappedToUser;
-            }
                 
         }
 
         // Programmer > Index > Case OR
-        // PM > Index > Project > Case
+        // PM > Index > Project > Case > Details > List OF Bugs
         public IEnumerable<Bug> getListOfBugs(int caseID)
         {
             Case c = casedata.Where(x => x.caseID == caseID).FirstOrDefault();

@@ -11,21 +11,24 @@ namespace BugTrackerApplication.Controllers
     public class BugController : CRUDController<Bug>
     {
         BugGateway bdb = new BugGateway();
+        int id = (int)System.Web.HttpContext.Current.Session["userID"];
         public BugController()
         {
             db = new BugGateway();            
         }
 
         //Customer View
-        public ActionResult Index(User user)
+        public ActionResult Index()
         {
-            return View(bdb.getUserBug(user));
+            return View(bdb.getUserBug(id));
         }
 
         // GET: CRUD/Create
         public ActionResult Create()
         {
-            return View();
+            Bug bug = new Models.Bug();
+            bug.customerID = id;
+            return View(bug);
         }
     }
 }

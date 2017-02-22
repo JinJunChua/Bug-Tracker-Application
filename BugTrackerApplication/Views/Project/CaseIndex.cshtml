@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<BugTrackerApplication.Models.Case>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "CaseIndex";
 }
 
-<h2>Index</h2>
+<h2>CaseIndex of [INSERT PROJECT NAME]</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -41,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.pmID)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.caseID }) |
+            @Html.ActionLink("Details", "Details", "Case", new { id=item.caseID }, null) 
         </td>
     </tr>
 }

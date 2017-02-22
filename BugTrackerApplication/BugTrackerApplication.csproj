@@ -257,16 +257,24 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Project\Details.cshtml" />
-    <Content Include="Views\Project\Create.cshtml" />
     <Content Include="Views\Case\Index.cshtml" />
     <Content Include="Views\Case\ListOfBugs.cshtml" />
     <Content Include="Views\Case\Details.cshtml" />
-    <Content Include="Views\Case\Edit.cshtml" />
     <Content Include="Views\Project\Delete.cshtml" />
+    <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Project\CaseIndex.cshtml" />
+    <Content Include="Views\Project\CreateProject.cshtml" />
+    <Content Include="Views\Project\CreateCase.cshtml" />
+    <Content Include="Views\Case\Edit.cshtml" />
+    <Content Include="Views\Bug\Details.cshtml" />
+    <Content Include="Views\Bug\Delete.cshtml" />
+    <Content Include="Views\Bug\Edit.cshtml" />
+    <Content Include="Views\Bug\Index.cshtml" />
+    <Content Include="Views\Case\Delete.cshtml" />
+    <Content Include="Views\Bug\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Bug\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
