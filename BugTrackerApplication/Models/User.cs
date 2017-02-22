@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,8 +9,10 @@ namespace BugTrackerApplication.Models
     public class User
     {
         public int userID { get; set; }
+        [Display(Name = "User Name")]
         public String userName { get; set; }
         public String password { get; set; }
+        [Display(Name = "Role")]
         public String role { get; set; }
 
        //public int? AssignedProject_projectID { get; set; }

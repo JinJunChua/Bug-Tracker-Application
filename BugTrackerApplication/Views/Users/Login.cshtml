@@ -8,7 +8,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=1,initial-scale=1,user-scalable=1" />
     <title>Insert title here</title>
-
     <link href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/Login.css" />
@@ -28,29 +27,24 @@
                                     <form class="form-horizontal">
                                         <div class="form-group">
                                             <label for="inputEmail3" class="sr-only">Email</label>
-
                                             @Html.TextBoxFor(model => model.userName, new { @class = "form-control", @placeholder = "Email" })
-
                                         </div>
                                         <div class="form-group">
                                             <label for="inputPassword3" class="sr-only">Password</label>
-
                                             @Html.PasswordFor(model => model.password, new { @class = "form-control", @placeholder = "Password" })
-
                                         </div>
                                         <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <button type="submit" value="Login" class="btn btn-lg btn-info btn-block">Sign in</button>
+                                            <div class="col-sm-12" style="padding:0px;">
+                                                <button type="submit" value="Login" class="btn btn-lg btn-info btn-block" style="width:100%; margin:0px;">Sign in</button>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group center-block">
+                                            <br/>
                                             <span class="glyphicon glyphicon-question-sign text-primary"></span> <a href="#">Forgot your password ?</a><br />
                                             <span class="glyphicon glyphicon-user text-primary"></span> <a href="#">Create an account</a>
                                         </div>
-
                                     </form>
                                 }
-
                             </div>
                         </div>
                     </div>
@@ -60,5 +54,4 @@
     </section>
     <script src="~/Content/bootstrap.min.js"></script>
 </body>
-
 </html>

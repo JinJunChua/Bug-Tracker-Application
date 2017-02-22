@@ -4,11 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>View All Case</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -41,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.pmID)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.caseID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.caseID })
         </td>
     </tr>
 }

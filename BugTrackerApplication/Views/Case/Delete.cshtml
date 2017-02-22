@@ -8,7 +8,6 @@
 
 <h3>Are you sure you want to resolve this case?</h3>
 <div>
-    <h4>Case</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -42,6 +41,11 @@
         <dd>
             @Html.DisplayFor(model => model.pmID)
         </dd>
+        <dt>
+        </dt>
+        <dd>
+            <input type="submit" value="Resolve" class="btn btn-default" />
+        </dd>
 
     </dl>
 
@@ -49,8 +53,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Resolve" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                         @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>
