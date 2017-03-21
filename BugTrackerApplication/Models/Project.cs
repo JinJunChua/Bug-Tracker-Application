@@ -26,7 +26,9 @@ namespace BugTrackerApplication.Models
         [Display(Name = "Updated Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime updatedDate { get; set; }
+
         [Display(Name = "End Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime endDate { get; set; }
         //public virtual IEnumerable<User> listOfUsers { get; set; }
         public virtual ICollection<Case> listOfCase { get; set; }
