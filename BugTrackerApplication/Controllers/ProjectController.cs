@@ -13,6 +13,7 @@ namespace BugTrackerApplication.Controllers
         ProjectGateway pdb = new ProjectGateway();
         CaseGateway cdb = new CaseGateway();
         private int id = (int)System.Web.HttpContext.Current.Session["userID"];
+        private string username = (string)System.Web.HttpContext.Current.Session["UserName"];
         public ProjectController()
         {
             db = new ProjectGateway();
@@ -35,6 +36,7 @@ namespace BugTrackerApplication.Controllers
         {
             Project project = new Project();
             project.createdBy = id;
+            project.updatedBy = username;
             return View(project);
         }
 
@@ -58,6 +60,7 @@ namespace BugTrackerApplication.Controllers
             Project p = new Project(); 
             c.projectID = pid; 
             c.pmID = id; //User that is logged on
+            ViewData["projectName"] = pdb.getProjectName(pid);
             return View(c);
         }
 
