@@ -11,10 +11,6 @@ namespace BugTrackerApplication.Controllers
     public class CRUDController<T> : Controller where T : class
     {
         protected CRUDGateway<T> db;
-      
-
-
-
 
         // GET: CRUD/Details/5
         public ActionResult Details(int id)
