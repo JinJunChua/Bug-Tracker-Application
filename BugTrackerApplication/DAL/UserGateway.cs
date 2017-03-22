@@ -37,5 +37,10 @@ namespace BugTrackerApplication.DAL
             else
                 return 0;
         }
+
+        public void logoutUser()
+        {
+
+        }
     }
 }

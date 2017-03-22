@@ -23,11 +23,11 @@ namespace BugTrackerApplication.DAL
         {
             string connectionString = new SqlConnectionStringBuilder
             {
-                InitialCatalog = "BugTrackingManagement",
-                DataSource = "bugtrackermanagement.database.windows.net",
+                InitialCatalog = "dev2106db",
+                DataSource = "dev2103.database.windows.net",
                 IntegratedSecurity = false,
-                UserID = "fatgirl93",
-                Password = "1q2w3e4r%",
+                UserID = "dev2103admin",
+                Password = "iloveict2106!",
                 MultipleActiveResultSets = true,
                 PersistSecurityInfo = true,
             }.ConnectionString;
