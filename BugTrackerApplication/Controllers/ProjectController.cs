@@ -10,6 +10,7 @@ namespace BugTrackerApplication.Controllers
 {
     public class ProjectController : CRUDController<Project>
     {
+       
         ProjectGateway pdb = new ProjectGateway();
         CaseGateway cdb = new CaseGateway();
         private int id = (int)System.Web.HttpContext.Current.Session["userID"];
@@ -20,11 +21,29 @@ namespace BugTrackerApplication.Controllers
 
         //Manager - Project/Index
         public ActionResult Index()
-        {            
-            IEnumerable<Project> temp = pdb.getProjectData(id);
+        {
+        IEnumerable<Project> temp = pdb.getProjectData(id);
             return View(pdb.getProjectData(id)); 
         }
-        
+
+
+        [HttpPost]
+        public ActionResult Index(string searchTerm)
+        {
+            List<Project> emptyList = new List<Project>();
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+
+                emptyList = pdb.getOtherData().ToList();
+            }
+            else
+            {
+                emptyList = pdb.searchCaseData(searchTerm).ToList();
+            }
+
+            return View(emptyList);
+        }
+
         //Manager - Project/Index > click on Project Details > Click on Cases
         public ActionResult CaseIndex(int pid)
         {
@@ -74,6 +93,7 @@ namespace BugTrackerApplication.Controllers
 
             return View(obj);
         }
+
 
     }
 }
