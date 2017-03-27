@@ -20,5 +20,8 @@ namespace BugTrackerApplication.DAL
             var allBugsMappedToUser = bugdata.Where(x => x.customerID == id);
             return allBugsMappedToUser.ToList();
         }
+
+           
+
     }
 }

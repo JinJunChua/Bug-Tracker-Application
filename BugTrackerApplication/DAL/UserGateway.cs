@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using BugTrackerApplication.Models;
 using System.Data.Entity;
+using System.Web.Mvc;
+using System.Web.Security;
 
 namespace BugTrackerApplication.DAL
 {
@@ -28,6 +30,11 @@ namespace BugTrackerApplication.DAL
             }
             return new User();
         }
+
+
+
+
+  
 
         public int getUserId(string username)
         {

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace BugTrackerApplication.Controllers
 {
@@ -22,6 +23,14 @@ namespace BugTrackerApplication.Controllers
             //TODO: ADD STUFF
 
         }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear(); // it will clear the session at the end of request
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult Index()
         {
             if (Session["UserID"] == null)

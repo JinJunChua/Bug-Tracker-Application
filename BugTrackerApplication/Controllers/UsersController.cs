@@ -10,6 +10,7 @@ using BugTrackerApplication.DAL;
 
 using BugTrackerApplication.Models;
 using System.Web.Services;
+using System.Web.Security;
 
 namespace BugTrackerApplication.Controllers
 {
@@ -30,7 +31,6 @@ namespace BugTrackerApplication.Controllers
             return View();
         }
 
-        
         [HttpPost]
         [WebMethod(EnableSession = true)]
         public ActionResult Login(String username, String password)
@@ -63,7 +63,25 @@ namespace BugTrackerApplication.Controllers
             }
             return View();
         }
+    
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon(); // it will clear the session at the end of request
+            return RedirectToAction("Index", "Home");
+        }
 
-        
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Register(User U)
+        //{
+        //    if
+        //} 
+
     }
 }

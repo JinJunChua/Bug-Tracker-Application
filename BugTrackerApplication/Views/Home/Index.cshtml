@@ -2,6 +2,11 @@
     ViewBag.Title = "Home Page";
 }
 
+@if (User != null)
+{
+    @Html.ActionLink("Logout", "LogOut","Home");
+}
+
 <div class="row">
     <div class="col-lg-12">
         @if (Session["UserID"] != null)
@@ -10,6 +15,10 @@
         }
     </div>
 </div>
+
+
+
+
 <div class="row">
     <div class="col-lg-10">
         <h3>Projects</h3>
