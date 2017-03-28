@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BugTrackerApplication.DAL;
-
+using System.Collections.Generic;
 using BugTrackerApplication.Models;
 using System.Web.Services;
 using System.Web.Security;
@@ -67,7 +66,7 @@ namespace BugTrackerApplication.Controllers
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            Session.Abandon(); // it will clear the session at the end of request
+            Session.Clear(); // it will clear the session at the end of request
             return RedirectToAction("Index", "Home");
         }
 
@@ -76,12 +75,25 @@ namespace BugTrackerApplication.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Register(User U)
-        //{
-        //    if
-        //} 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(User U)
+        {
+            if(ModelState.IsValid)
+            {
+                using (BugTrackerApplicationContext dc = new BugTrackerApplicationContext())
+                {
+                    dc.User.Add(U);
+                    dc.SaveChanges();
+                    ModelState.Clear();
+                    U = null;
+                    ViewBag.Message = "Registration Successfully !";
+
+                }
+
+            }
+            return View(U);
+        }
 
     }
 }

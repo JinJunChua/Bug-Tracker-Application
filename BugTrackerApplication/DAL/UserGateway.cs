@@ -14,6 +14,7 @@ namespace BugTrackerApplication.DAL
         internal BugTrackerApplicationContext db = new BugTrackerApplicationContext();
         internal DbSet<User> data = null;
 
+
         public UserGateway()
         {
             this.data = db.Set<User>();
@@ -31,10 +32,6 @@ namespace BugTrackerApplication.DAL
             return new User();
         }
 
-
-
-
-  
 
         public int getUserId(string username)
         {
