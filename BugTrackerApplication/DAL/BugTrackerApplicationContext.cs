@@ -18,7 +18,7 @@ namespace BugTrackerApplication.DAL
         {
 
         }
-
+        
         //public static string GetEntityConnectionString()
         //{
         //    string connectionString = new SqlConnectionStringBuilder

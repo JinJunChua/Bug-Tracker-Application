@@ -27,7 +27,7 @@ namespace BugTrackerApplication.Migrations
             //  new Person { FullName = "Brice Lambson" },
             //  new Person { FullName = "Rowan Miller" }
             //);
-
+            
             db.User.Add(new User()
             {
                 password = "password",

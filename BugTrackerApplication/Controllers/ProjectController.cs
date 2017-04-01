@@ -120,46 +120,6 @@ namespace BugTrackerApplication.Controllers
 
             return View(obj);
         }
-
-        //    GET after create case, come to this page
-        //    public ActionResult AddBugsToCase(int cid)
-        //    {
-        //        System.Diagnostics.Debug.WriteLine("inin");
-        //        get case through passed in cid first
-        //        Case c = new Case();
-        //        c = cdb.getCase(cid);
-
-        //        Then, get the project of the case
-        //        Project p = new Project();
-        //        p = pdb.getProject(c.projectID);
-
-        //        Then populate the view based on the list of bugs related to the project
-        //        c.availableBugs = bdb.getBugRelatedToProjectName(p.projectName);
-
-        //        pass to view
-        //        ViewBag.cid = cid;
-        //        return View();
-        //    }
-
-        //    [HttpPost]
-        //    [ValidateAntiForgeryToken]
-        //    public ActionResult AddBugsToCase(Case c)
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            technically, this is to update the bug to have a case id to it
-        //            foreach (var bug in c.selectedBugs) //value is the id of the bug
-        //            {
-        //                Bug b = new Bug();
-        //                b = bdb.getBug(int.Parse(bug));
-        //                b.caseID = c.caseID;
-        //                bdb.Update(b);
-        //            }
-        //            return RedirectToAction("Index");
-        //        }
-
-        //        return View(c);
-        //    }
-        //}
+        
     }
 }
