@@ -186,7 +186,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bug.cs" />
     <Compile Include="Models\Case.cs" />
-    <Compile Include="Models\ProductSearchModel.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserAssignedProject.cs" />

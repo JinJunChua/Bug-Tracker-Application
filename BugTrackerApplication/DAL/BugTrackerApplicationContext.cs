@@ -14,26 +14,26 @@ namespace BugTrackerApplication.DAL
     public class BugTrackerApplicationContext : DbContext
     {
         public BugTrackerApplicationContext()
-            : base(GetEntityConnectionString())
+            : base("BugTrackingSystem")
         {
 
         }
 
-        public static string GetEntityConnectionString()
-        {
-            string connectionString = new SqlConnectionStringBuilder
-            {
-                InitialCatalog = "BugTrackingManagement",
-                DataSource = "bugtrackermanagement.database.windows.net",
-                IntegratedSecurity = false,
-                UserID = "fatgirl93",
-                Password = "1q2w3e4r%",
-                MultipleActiveResultSets = true,
-                PersistSecurityInfo = true,
-            }.ConnectionString;
-            return connectionString;
+        //public static string GetEntityConnectionString()
+        //{
+        //    string connectionString = new SqlConnectionStringBuilder
+        //    {
+        //        InitialCatalog = "BugTrackingManagement",
+        //        DataSource = "bugtrackermanagement.database.windows.net",
+        //        IntegratedSecurity = false,
+        //        UserID = "fatgirl93",
+        //        Password = "1q2w3e4r%",
+        //        MultipleActiveResultSets = true,
+        //        PersistSecurityInfo = true,
+        //    }.ConnectionString;
+        //    return connectionString;
 
-        }
+        //}
 
         public DbSet<User> User { get; set; }
         public DbSet<Project> Project { get; set; }
