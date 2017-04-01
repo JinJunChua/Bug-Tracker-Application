@@ -2,10 +2,26 @@
 
 @{
     ViewBag.Title = "Index";
+
 }
 
-<h2>View All Case</h2>
+<h2>Index</h2>
 
+
+
+<div style="font-family:Arial">
+    @using (Html.BeginForm())
+    {
+        <b>Name:</b>
+        @Html.TextBox("searchTerm", null, new { id = "txtSearch" })
+        <input type="submit" value="Search" />
+    }
+</div>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -23,24 +39,43 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssignedToProject.projectName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Programmer.userName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pmID)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.caseID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssignedToProject.projectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Programmer.userName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pmID)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.caseID }) |
+            </td>
+        </tr>
+    }
 
 </table>
+
+
+@section Scripts {
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Content/jquery-ui.js"></script>
+
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Content/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $("#txtSearch").autocomplete({
+                source: '@Url.Action("GetData")' ,
+                minLength:2
+            });
+        });a
+    </script>
+
+}

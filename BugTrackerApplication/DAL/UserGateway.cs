@@ -5,6 +5,7 @@ using System.Web;
 using BugTrackerApplication.Models;
 using System.Data.Entity;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace BugTrackerApplication.DAL
 {
@@ -12,6 +13,7 @@ namespace BugTrackerApplication.DAL
     {
         internal BugTrackerApplicationContext db = new BugTrackerApplicationContext();
         internal DbSet<User> data = null;
+
 
         public UserGateway()
         {
@@ -29,6 +31,7 @@ namespace BugTrackerApplication.DAL
             }
             return new User();
         }
+
 
         public int getUserId(string username)
         {

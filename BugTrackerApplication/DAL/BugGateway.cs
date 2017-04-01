@@ -21,7 +21,7 @@ namespace BugTrackerApplication.DAL
             var allBugsMappedToUser = bugdata.Where(x => x.customerID == id);
             return allBugsMappedToUser.ToList();
         }
-
+        
         public Bug getBug(int bid)
         {
             var bugs = bugdata.Where(x => x.bugID == bid).FirstOrDefault();

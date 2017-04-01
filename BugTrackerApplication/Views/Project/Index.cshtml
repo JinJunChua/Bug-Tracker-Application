@@ -4,9 +4,29 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Project Manager - List of Projects</h2>
-    @Html.ActionLink("Create New", "CreateProject")
+<h2>Project Manager -- List of Projects</h2>
+@Html.ActionLink("Create New", "Create")
 
+
+
+@if (User != null)
+{
+    
+    @Html.ActionLink("Register Account", "Register", "Users")
+    @Html.ActionLink("Logout", "LogOut", "Home");
+}
+
+
+
+
+<div style="font-family:Arial">
+    @using (Html.BeginForm())
+    {
+        <b>Name:</b>
+        @Html.TextBox("searchTerm", null, new { id = "txtSearch" })
+        <input type="submit" value="Search" />
+    }
+</div>
 <table class="table">
     <tr>
         <th>
@@ -36,38 +56,48 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Manager.userName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.projectName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.projectDesc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.projectVersion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.updatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.createdDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.updatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.endDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.projectID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.projectID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.projectID })
-        </td>
-    </tr>
-}
 
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="8"> No rows match search citeria </td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manager.userName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.projectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.projectDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.projectVersion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.updatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.createdDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.updatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.endDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.projectID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.projectID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.projectID })
+                </td>
+            </tr>
+        }
+    }
 </table>

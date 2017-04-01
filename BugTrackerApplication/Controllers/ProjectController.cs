@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace BugTrackerApplication.Controllers
 {
@@ -22,6 +23,13 @@ namespace BugTrackerApplication.Controllers
         {
             db = new ProjectGateway();
         }
+        public ActionResult LogOut()
+        {
+
+            //FormsAuthentication.SignOut();
+            Session.Clear(); // it will clear the session at the end of request
+            return RedirectToAction("Index", "Home");
+        }
 
         //Manager - Project/Index
         public ActionResult Index()
@@ -29,7 +37,24 @@ namespace BugTrackerApplication.Controllers
             IEnumerable<Project> temp = pdb.getProjectData(id);
             return View(pdb.getProjectData(id));
         }
+        
+        [HttpPost]
+        public ActionResult Index(string searchTerm)
+        {
+            List<Project> emptyList = new List<Project>();
+            if (string.IsNullOrEmpty(searchTerm))
+            {
 
+                emptyList = pdb.getOtherData().ToList();
+            }
+            else
+            {
+                emptyList = pdb.searchCaseData(searchTerm).ToList();
+            }
+
+            return View(emptyList);
+        }
+        
         //Manager - Project/Index > click on Project Details > Click on Cases
         public ActionResult CaseIndex(int pid)
         {

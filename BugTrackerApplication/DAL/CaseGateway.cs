@@ -10,6 +10,7 @@ namespace BugTrackerApplication.DAL
     public class CaseGateway : CRUDGateway<Case>
     {
         internal DbSet<Case> casedata = null;
+        private IEnumerable<Case> allCaseByName;
 
         public CaseGateway()
         {
@@ -23,6 +24,13 @@ namespace BugTrackerApplication.DAL
                 return allCaseMappedToUser;
                 
         }
+
+        //for all other users
+        public IEnumerable<Case> getOtherData()
+        {
+            return casedata.ToList();
+        }
+
 
         // Programmer > Index > Case OR
         // PM > Index > Project > Case > Details > List OF Bugs
@@ -39,6 +47,24 @@ namespace BugTrackerApplication.DAL
                 return c;
             else
                 return null;
+        }
+
+        public IEnumerable<Case> searchCaseData(string searchTerm)
+        {
+            // IEnumerable<Case> allCaseByName = null;
+
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+
+                return allCaseByName = casedata.Where(x => x.status == searchTerm).ToList();
+
+            }
+            else
+            {
+                //return allCaseByName = casedata.Where(x => x.status.StartsWith(searchTerm)).ToList(); 
+                return allCaseByName = casedata.Where(x => x.status.ToLower().Contains(searchTerm.ToLower())).ToList();
+            }
+
         }
     }
 }
