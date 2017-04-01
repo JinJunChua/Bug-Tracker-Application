@@ -4,18 +4,23 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 using System.Web;
+using System.Web.Mvc;
 
 namespace BugTrackerApplication.Models
 {
     public class Project
     {
         public int projectID { get; set; }
+
         [Display(Name = "Project Name")]
         public String projectName { get; set; }
+
         [Display(Name = "Project Title")]
         public String projectDesc { get; set; }
+
         [Display(Name = "Version")]
         public String projectVersion { get; set; }
+
         [Display(Name = "Updated By")]
         public String updatedBy { get; set; }
 
@@ -31,9 +36,15 @@ namespace BugTrackerApplication.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime endDate { get; set; }
         //public virtual IEnumerable<User> listOfUsers { get; set; }
+       
+        //
+        public virtual IEnumerable<string> selectedProgrammers { get; set; }
+        public virtual IEnumerable<SelectListItem> availableProgrammers { get; set; }
+
         public virtual ICollection<Case> listOfCase { get; set; }
         public virtual ICollection<UserAssignedProject> listOfAssignedUsers { get; set; }
         public virtual User Manager { get; set; }
+
         [Display(Name = "Created By")]
         public int createdBy { get; set; } //by which manager
         
@@ -43,6 +54,10 @@ namespace BugTrackerApplication.Models
             //listOfUsers = new List<User>();
             listOfCase = new List<Case>();
             listOfAssignedUsers = new List<UserAssignedProject>();
+
+            //
+            selectedProgrammers = new List<string>();
+            availableProgrammers = new List<SelectListItem>();
         }
     }
 }

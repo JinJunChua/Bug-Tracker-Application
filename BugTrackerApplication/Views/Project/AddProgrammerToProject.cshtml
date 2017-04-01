@@ -1,0 +1,27 @@
+﻿@model BugTrackerApplication.Models.Project
+
+@{
+    ViewBag.Title = "AddProgrammerToProject";
+}
+
+<h2>AddProgrammerToProject</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.projectID, new { pid = ViewBag.Message })
+    foreach (var item in Model.availableProgrammers)
+    {
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"
+                       name="selectedProgrammers"
+                       value="@item.Value" /> @item.Text
+                </label>
+            </div>
+    }
+    <div class="form-group text-center">
+        <input type="submit" class="btn btn-primary" value="Submit" />
+    </div>
+}
+

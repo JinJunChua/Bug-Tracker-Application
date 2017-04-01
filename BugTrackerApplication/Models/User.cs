@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BugTrackerApplication.Models
 {
@@ -34,6 +35,9 @@ namespace BugTrackerApplication.Models
         public virtual ICollection<UserAssignedProject> listOfAssignedProject { get; set; } // for the programmer
         public virtual ICollection<Project> manageProjects { get; set; }
         public virtual ICollection<Case> listOfCase { get; set; }
+
+        
+
         public User()
         {
             listOfAssignedProject = new List<UserAssignedProject>();

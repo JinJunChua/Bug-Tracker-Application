@@ -11,6 +11,7 @@ namespace BugTrackerApplication.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "BugTrackerApplication.Models.ApplicationDbContext";
         }
 
@@ -27,8 +28,28 @@ namespace BugTrackerApplication.Migrations
             //  new Person { FullName = "Brice Lambson" },
             //  new Person { FullName = "Rowan Miller" }
             //);
+            
+            db.User.Add(new User()
+            {
+                password = "password",
+                role = "Customer",
+                userName = "Helppls",
+            });
 
-         
+            //db.Bug.Add(new Bug()
+            //{
+            //    attachments = string.Empty,
+            //    bugDesc = "a bug desc",
+            //    bugID = 1,
+            //    comments = "aadsf",
+            //    createdDate = new DateTime(),
+            //    customerID = 1,
+            //    dueDate = new DateTime(),
+            //    priority = "High",
+            //    projectName = "A prject",
+            //    status = "Status",
+            //    updatedDate = new DateTime()
+            //});
         }
     }
 }

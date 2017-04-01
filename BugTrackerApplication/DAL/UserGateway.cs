@@ -41,5 +41,36 @@ namespace BugTrackerApplication.DAL
             else
                 return 0;
         }
+
+        public string getUsername(int id)
+        {
+            var findUsername = db.User.Where(x => x.userID == id).FirstOrDefault();
+            if (findUsername != null)
+                return findUsername.userName;
+            else
+                return null;
+        }
+
+        public User getUser(int id)
+        {
+            var findUser = db.User.Where(x => x.userID == id).FirstOrDefault();
+            if (findUser != null)
+                return findUser;
+            else
+                return null;
+        }
+
+        public IEnumerable<SelectListItem> GetAllProgrammers()
+        {
+            var listOfProgrammers = db.User.Where(x => x.role == "Programmer").Select(x => new SelectListItem
+            {
+                Value = x.userID.ToString(),
+                Text = x.userName.ToString(),
+
+            }).ToList();
+
+            //return new SelectList(listOfProgrammers, "Value", "Text");
+            return listOfProgrammers;
+        }
     }
 }

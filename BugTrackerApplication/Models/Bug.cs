@@ -32,6 +32,10 @@ namespace BugTrackerApplication.Models
         public DateTime? dueDate { get; set; }
         public int? caseID { get; set; }
 
+        [Display (Name = "Resolved")]
+        //for programmer
+        public bool checkBoxStatus { get; set; }
+
         public virtual Case AssignedToCase { get; set; }
         //public virtual Project Assigned
 

@@ -38,29 +38,27 @@ namespace BugTrackerApplication.Controllers
 
             if(obj != null)
             {
+                System.Web.HttpContext.Current.Session["role"] = obj.role;
                 switch (obj.role)
                 {
                     case "Admin":
-                        Session["UserID"] = obj.userName.ToString();
-                        Session["Role"] = obj.role.ToString();
-                        System.Web.HttpContext.Current.Session["userID"] = obj.userID; 
+                        System.Web.HttpContext.Current.Session["userID"] = obj.userID;
+                        System.Web.HttpContext.Current.Session["userName"] = obj.userName;
                         return RedirectToAction("Index", "Project");
 
                     case "Customer":
-                        Session["UserID"] = obj.userName.ToString();
-                        Session["Role"] = obj.role.ToString();
                         System.Web.HttpContext.Current.Session["userID"] = obj.userID;
+                        System.Web.HttpContext.Current.Session["userName"] = obj.userName;
                         return RedirectToAction("Index", "Bug");
 
                     case "Programmer":
-                        Session["UserID"] = obj.userName.ToString();
-                        Session["Role"] = obj.role.ToString();
                         System.Web.HttpContext.Current.Session["userID"] = obj.userID;
+                        System.Web.HttpContext.Current.Session["userName"] = obj.userName;
                         return RedirectToAction("Index", "Case");
                 }          
 
             }
-            return View();
+            return View(); 
         }
     
         public ActionResult LogOut()
@@ -94,6 +92,5 @@ namespace BugTrackerApplication.Controllers
             }
             return View(U);
         }
-
     }
 }

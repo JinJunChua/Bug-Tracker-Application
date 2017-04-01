@@ -40,6 +40,15 @@ namespace BugTrackerApplication.DAL
             return c.listOfBugs.ToList();
         }
 
+        public Case getCase(int caseID)
+        {
+            Case c = casedata.Where(x => x.caseID == caseID).FirstOrDefault();
+            if (c != null)
+                return c;
+            else
+                return null;
+        }
+
         public IEnumerable<Case> searchCaseData(string searchTerm)
         {
             // IEnumerable<Case> allCaseByName = null;
@@ -57,9 +66,5 @@ namespace BugTrackerApplication.DAL
             }
 
         }
-
-
-
-
     }
 }

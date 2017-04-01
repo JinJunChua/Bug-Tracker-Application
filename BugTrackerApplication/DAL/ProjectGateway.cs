@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using BugTrackerApplication.Models;
 using System.Data.Entity;
+using System.Web.Mvc;
 
 namespace BugTrackerApplication.DAL
 {
     public class ProjectGateway : CRUDGateway<Project>
     {
         internal DbSet<Project> projectdata = null;
+        internal DbSet<UserAssignedProject> userAssignedProject = null;
         private IEnumerable<Project> allCaseByName;
        // public DbSet<Project> Context;
 
@@ -36,7 +38,15 @@ namespace BugTrackerApplication.DAL
             else
                 return null;
         }
-
+        
+        public Project getProject(int pid)
+        {
+            Project p = projectdata.Where(x => x.projectID == pid).FirstOrDefault();
+            if (p != null)
+                return p;
+            else
+                return null;
+        }
 
         //public IQueryable<Project> GetProducts(ProductSearchModel searchModel)
         //{
@@ -79,8 +89,5 @@ namespace BugTrackerApplication.DAL
             }
 
         }
-
-
-
     }
 }

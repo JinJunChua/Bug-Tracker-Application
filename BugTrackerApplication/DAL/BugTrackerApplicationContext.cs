@@ -67,14 +67,12 @@ namespace BugTrackerApplication.DAL
             modelBuilder.Entity<UserAssignedProject>() // class that has the many relationship
                 .HasRequired(a => a.AssignedProject) // class that has the one relation
                 .WithMany(b => b.listOfAssignedUsers) // name of the IEnnumerablensrjgndrj
-                .HasForeignKey(c => c.userID).WillCascadeOnDelete(false); // Foreign key id
+                .HasForeignKey(c => c.projectID).WillCascadeOnDelete(false); // Foreign key id
 
             modelBuilder.Entity<UserAssignedProject>() // class that has the many relationship
                 .HasRequired(a => a.UserInvolvedProject) // class that has the one relation
                 .WithMany(b => b.listOfAssignedProject) // name of the IEnnumerablensrjgndrj
-                .HasForeignKey(c => c.projectID).WillCascadeOnDelete(false); // Foreign key id
-
-
+                .HasForeignKey(c => c.userID).WillCascadeOnDelete(false); // Foreign key id
 
             modelBuilder.Entity<Case>() // class that has the many relationship
                 .HasRequired(a => a.Programmer) // class that has the one relation
