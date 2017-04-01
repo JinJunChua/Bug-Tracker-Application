@@ -30,5 +30,7 @@ namespace BugTrackerApplication.Controllers
             bug.customerID = id;
             return View(bug);
         }
+
+        
     }
 }

@@ -87,6 +87,13 @@
         </td>
         <td>
             @Html.ActionLink("Details", "Details", "Bug", new { id=item.bugID }, null) 
+            @using (Html.BeginForm())
+            {
+                @Html.HiddenFor(modelItem => item.bugID)
+                <input type="hidden" name="bid" value= "@item.bugID"/>
+                    <input type="submit" value="Resolve" />
+            }
+
         </td>
     </tr>
 }

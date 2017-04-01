@@ -49,7 +49,21 @@ namespace BugTrackerApplication.Controllers
         {
             return View(cdb.getListOfBugs(cid));
         }
-        
+
+        //
+        [ActionName("ListOfBugs")]
+        [HttpPost]
+        public ActionResult ListOfBugs_(FormCollection form)
+        {
+            Bug bug = new Bug();
+            int bid = int.Parse(form.Get("bid"));
+            bug = bdb.getBug(bid);
+            bug.checkBoxStatus = true;
+            bdb.Update(bug);
+            return View(cdb.getListOfBugs(bug.caseID));
+        }
+
+
         //GET after create case, come to this page
         public ActionResult AddBugsToCase(int cid)
         {           
