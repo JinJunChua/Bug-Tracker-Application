@@ -176,6 +176,7 @@
     <Compile Include="DAL\CRUDGateway.cs" />
     <Compile Include="DAL\ICRUDGateway.cs" />
     <Compile Include="DAL\IUserGateway.cs" />
+    <Compile Include="DAL\UserAssignedProjectGateway.cs" />
     <Compile Include="DAL\UserGateway.cs" />
     <Compile Include="DAL\BugGateway.cs" />
     <Compile Include="DAL\BugTrackerApplicationContext.cs" />
@@ -271,6 +272,8 @@
     <Content Include="Views\Bug\Index.cshtml" />
     <Content Include="Views\Case\Delete.cshtml" />
     <Content Include="Views\Bug\Create.cshtml" />
+    <Content Include="Views\Project\AddProgrammerToProject.cshtml" />
+    <Content Include="Views\Case\AddBugsToCase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 using System.Web;
+using System.Web.Mvc;
 
 namespace BugTrackerApplication.Models
 {
@@ -34,6 +35,11 @@ namespace BugTrackerApplication.Models
         [Display(Name = "End Date")]
         public DateTime endDate { get; set; }
         //public virtual IEnumerable<User> listOfUsers { get; set; }
+       
+        //
+        public virtual IEnumerable<string> selectedProgrammers { get; set; }
+        public virtual IEnumerable<SelectListItem> availableProgrammers { get; set; }
+
         public virtual ICollection<Case> listOfCase { get; set; }
         public virtual ICollection<UserAssignedProject> listOfAssignedUsers { get; set; }
         public virtual User Manager { get; set; }
@@ -47,6 +53,10 @@ namespace BugTrackerApplication.Models
             //listOfUsers = new List<User>();
             listOfCase = new List<Case>();
             listOfAssignedUsers = new List<UserAssignedProject>();
+
+            //
+            selectedProgrammers = new List<string>();
+            availableProgrammers = new List<SelectListItem>();
         }
     }
 }

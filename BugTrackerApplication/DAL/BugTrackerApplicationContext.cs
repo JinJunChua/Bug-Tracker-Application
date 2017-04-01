@@ -14,26 +14,26 @@ namespace BugTrackerApplication.DAL
     public class BugTrackerApplicationContext : DbContext
     {
         public BugTrackerApplicationContext()
-            : base(GetEntityConnectionString())
+            : base("BugTrackingSystem")
         {
 
         }
 
-        public static string GetEntityConnectionString()
-        {
-            string connectionString = new SqlConnectionStringBuilder
-            {
-                InitialCatalog = "BugTrackingManagement",
-                DataSource = "bugtrackermanagement.database.windows.net",
-                IntegratedSecurity = false,
-                UserID = "fatgirl93",
-                Password = "1q2w3e4r%",
-                MultipleActiveResultSets = true,
-                PersistSecurityInfo = true,
-            }.ConnectionString;
-            return connectionString;
+        //public static string GetEntityConnectionString()
+        //{
+        //    string connectionString = new SqlConnectionStringBuilder
+        //    {
+        //        InitialCatalog = "BugTrackingManagement",
+        //        DataSource = "bugtrackermanagement.database.windows.net",
+        //        IntegratedSecurity = false,
+        //        UserID = "fatgirl93",
+        //        Password = "1q2w3e4r%",
+        //        MultipleActiveResultSets = true,
+        //        PersistSecurityInfo = true,
+        //    }.ConnectionString;
+        //    return connectionString;
 
-        }
+        //}
 
         public DbSet<User> User { get; set; }
         public DbSet<Project> Project { get; set; }
@@ -67,14 +67,12 @@ namespace BugTrackerApplication.DAL
             modelBuilder.Entity<UserAssignedProject>() // class that has the many relationship
                 .HasRequired(a => a.AssignedProject) // class that has the one relation
                 .WithMany(b => b.listOfAssignedUsers) // name of the IEnnumerablensrjgndrj
-                .HasForeignKey(c => c.userID).WillCascadeOnDelete(false); // Foreign key id
+                .HasForeignKey(c => c.projectID).WillCascadeOnDelete(false); // Foreign key id
 
             modelBuilder.Entity<UserAssignedProject>() // class that has the many relationship
                 .HasRequired(a => a.UserInvolvedProject) // class that has the one relation
                 .WithMany(b => b.listOfAssignedProject) // name of the IEnnumerablensrjgndrj
-                .HasForeignKey(c => c.projectID).WillCascadeOnDelete(false); // Foreign key id
-
-
+                .HasForeignKey(c => c.userID).WillCascadeOnDelete(false); // Foreign key id
 
             modelBuilder.Entity<Case>() // class that has the many relationship
                 .HasRequired(a => a.Programmer) // class that has the one relation

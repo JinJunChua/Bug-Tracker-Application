@@ -35,20 +35,20 @@ namespace BugTrackerApplication.Migrations
                 userName = "Helppls",
             });
 
-            db.Bug.Add(new Bug()
-            {
-                attachments = string.Empty,
-                bugDesc = "a bug desc",
-                bugID = 1,
-                comments = "aadsf",
-                createdDate = new DateTime(),
-                customerID = 1,
-                dueDate = new DateTime(),
-                priority = "High",
-                projectName = "A prject",
-                status = "Status",
-                updatedDate = new DateTime()
-            });
+            //db.Bug.Add(new Bug()
+            //{
+            //    attachments = string.Empty,
+            //    bugDesc = "a bug desc",
+            //    bugID = 1,
+            //    comments = "aadsf",
+            //    createdDate = new DateTime(),
+            //    customerID = 1,
+            //    dueDate = new DateTime(),
+            //    priority = "High",
+            //    projectName = "A prject",
+            //    status = "Status",
+            //    updatedDate = new DateTime()
+            //});
         }
     }
 }

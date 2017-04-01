@@ -66,8 +66,9 @@ namespace BugTrackerApplication.Controllers
         }
 
         // POST: CRUD/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, User user)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
             try
             {

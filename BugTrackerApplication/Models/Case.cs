@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BugTrackerApplication.Models
 {
@@ -23,10 +24,20 @@ namespace BugTrackerApplication.Models
 
         public virtual User Programmer { get; set; }
         public virtual Project AssignedToProject { get; set; }
+        
+        //UI
+        public IEnumerable<SelectListItem> listOfProgrammers { get; set; }
+        public IEnumerable<SelectListItem> availableBugs { get; set; }
+        public IEnumerable<string> selectedBugs { get; set; }
 
         public Case ()
         {
             listOfBugs = new List<Bug>();
+
+            //UI
+            listOfProgrammers = new List<SelectListItem>();
+            selectedBugs = new List<string>();
+            availableBugs = new List<SelectListItem>();
         }
     }
 }

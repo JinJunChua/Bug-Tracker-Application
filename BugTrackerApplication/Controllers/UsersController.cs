@@ -39,6 +39,7 @@ namespace BugTrackerApplication.Controllers
 
             if(obj != null)
             {
+                System.Web.HttpContext.Current.Session["role"] = obj.role;
                 switch (obj.role)
                 {
                     case "Admin":
