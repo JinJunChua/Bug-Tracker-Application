@@ -81,5 +81,12 @@ namespace BugTrackerApplication.Controllers
                 return View();
             }
         }
+
+        public ActionResult LogOut()
+        {
+            //FormsAuthentication.SignOut();
+            Session.Clear(); // it will clear the session at the end of request
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

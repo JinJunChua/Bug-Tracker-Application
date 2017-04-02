@@ -48,6 +48,15 @@ namespace BugTrackerApplication.DAL
                 return null;
         }
 
+        public String getProjectName(int pid)
+        {
+            Project p = projectdata.Where(x => x.projectID == pid).FirstOrDefault();
+            if (p != null)
+                return p.projectName;
+            else
+                return null;
+        }
+
         //public IQueryable<Project> GetProducts(ProductSearchModel searchModel)
         //{
         //    var result = Context..Project.AsQueryable();

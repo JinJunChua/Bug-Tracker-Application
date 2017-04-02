@@ -23,14 +23,7 @@ namespace BugTrackerApplication.Controllers
         {
             db = new ProjectGateway();
         }
-        public ActionResult LogOut()
-        {
-
-            //FormsAuthentication.SignOut();
-            Session.Clear(); // it will clear the session at the end of request
-            return RedirectToAction("Index", "Home");
-        }
-
+        
         //Manager - Project/Index
         public ActionResult Index()
         {
@@ -99,7 +92,7 @@ namespace BugTrackerApplication.Controllers
             return View(p);
         }
 
-        [HttpPost]
+        [HttpPost]  
         [ValidateAntiForgeryToken]
         public ActionResult AddProgrammerToProject(Project obj)
         {

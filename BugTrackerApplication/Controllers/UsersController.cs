@@ -86,9 +86,7 @@ namespace BugTrackerApplication.Controllers
                     ModelState.Clear();
                     U = null;
                     ViewBag.Message = "Registration Successfully !";
-
                 }
-
             }
             return View(U);
         }

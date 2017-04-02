@@ -80,6 +80,7 @@ namespace BugTrackerApplication.Controllers
 
             //pass to view
             ViewBag.cid = cid;
+            ViewBag.projectName = pdb.getProjectName(c.projectID);
             return View(c);
         }
 
