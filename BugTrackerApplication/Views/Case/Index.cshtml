@@ -1,12 +1,18 @@
 ﻿@model IEnumerable<BugTrackerApplication.Models.Case>
-
 @{
     ViewBag.Title = "Index";
 
 }
-
 <h2>Index</h2>
 
+@Html.ActionLink("Create New", "Create")
+
+<div style="text-align:right">
+    @if (User != null)
+    {
+        @Html.ActionLink("Logout", "LogOut", "Home");
+    }
+</div>
 
 
 <div style="font-family:Arial">
@@ -15,13 +21,12 @@
         <b>Name:</b>
         @Html.TextBox("searchTerm", null, new { id = "txtSearch" })
         <input type="submit" value="Search" />
+       <p></p>        <p></p>
+
     }
 </div>
 
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -38,8 +43,16 @@
         </th>
         <th></th>
     </tr>
+@if (Model.Count() == 0)
+{
+    <tr>
+        <td colspan="8"> No rows match search citeria </td>
+    </tr>
+}
+else
+{
 
-    @foreach (var item in Model)
+    foreach (var item in Model)
     {
         <tr>
             <td>
@@ -59,14 +72,12 @@
             </td>
         </tr>
     }
-
+}
 </table>
-
 
 @section Scripts {
     <link href="~/Content/jquery-ui.css" rel="stylesheet" />
     <script src="~/Content/jquery-ui.js"></script>
-
     <link href="~/Content/jquery-ui.css" rel="stylesheet" />
     <script src="~/Content/jquery-ui.js"></script>
     <script type="text/javascript">
@@ -77,5 +88,4 @@
             });
         });a
     </script>
-
 }

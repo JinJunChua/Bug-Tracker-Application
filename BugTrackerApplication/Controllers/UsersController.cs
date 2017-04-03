@@ -18,7 +18,7 @@ namespace BugTrackerApplication.Controllers
         private BugTrackerApplicationContext db = new BugTrackerApplicationContext();
         private UserGateway userGateway = new UserGateway();
         // GET: Users
-       
+
 
         public ActionResult Index()
         {
@@ -36,7 +36,7 @@ namespace BugTrackerApplication.Controllers
         {
             var obj = userGateway.Login(username, password);
 
-            if(obj != null)
+            if (obj != null)
             {
                 System.Web.HttpContext.Current.Session["role"] = obj.role;
                 switch (obj.role)
@@ -55,12 +55,12 @@ namespace BugTrackerApplication.Controllers
                         System.Web.HttpContext.Current.Session["userID"] = obj.userID;
                         System.Web.HttpContext.Current.Session["userName"] = obj.userName;
                         return RedirectToAction("Index", "Case");
-                }          
+                }
 
             }
-            return View(); 
+            return View();
         }
-    
+
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
@@ -68,27 +68,32 @@ namespace BugTrackerApplication.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
         public ActionResult Register()
         {
             return View();
         }
 
+        //Register will invoke Register_ method to create a new user
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(User U)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                using (BugTrackerApplicationContext dc = new BugTrackerApplicationContext())
-                {
-                    dc.User.Add(U);
-                    dc.SaveChanges();
-                    ModelState.Clear();
-                    U = null;
-                    ViewBag.Message = "Registration Successfully !";
-                }
+                userGateway.Register_(U);
+                ModelState.Clear();
+                U = null;
+                ViewBag.Message = "Registration Successful !";
+
             }
             return View(U);
         }
+
+
+
+
+
+
     }
 }

@@ -11,7 +11,8 @@
 <div style="text-align:right">
     @if (User != null)
     {
-        @Html.ActionLink("Register Account", "Register", "Users")
+        @Html.ActionLink("Register Account  | ", "Register", "Users") 
+         
         @Html.ActionLink("Logout", "LogOut", "Home");
     }
 </div>
@@ -21,7 +22,7 @@
     {
         <b>Name:</b>
         @Html.TextBox("searchTerm", null, new { id = "txtSearch" })
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search" />        <p></p>        <p></p>
     }
 </div>
 

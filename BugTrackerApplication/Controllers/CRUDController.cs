@@ -45,16 +45,6 @@ namespace BugTrackerApplication.Controllers
         [HttpPost]
         public ActionResult Edit(T obj)
         {
-            //try
-            //{
-            //    // TODO: Add update logic here                
-            //    db.Update(obj);
-            //    return RedirectToAction("Index");
-            //}
-            //catch
-            //{
-            //    return View(obj);
-            //}
             db.Update(obj);
             return RedirectToAction("Index");
         }
@@ -88,5 +78,6 @@ namespace BugTrackerApplication.Controllers
             Session.Clear(); // it will clear the session at the end of request
             return RedirectToAction("Index", "Home");
         }
+
     }
 }

@@ -271,9 +271,11 @@
     <Content Include="Views\Case\AddBugsToCase.cshtml" />
     <Content Include="Views\Home\LogOut.cshtml" />
     <Content Include="Views\Users\Register.cshtml" />
+    <Content Include="Views\Bug\CreateBug.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Bug\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

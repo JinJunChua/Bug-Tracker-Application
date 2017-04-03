@@ -71,5 +71,24 @@ namespace BugTrackerApplication.DAL
             //return new SelectList(listOfProgrammers, "Value", "Text");
             return listOfProgrammers;
         }
+
+
+        //public void Insert(T obj)
+        //{
+        //    data.Add(obj);
+        //    db.SaveChanges();
+        //}
+        
+        public void Register_(User U)
+        {
+                data.Add(U);
+                db.SaveChanges();
+           
+            }
+
+
+        }
+
+
+
     }
-}

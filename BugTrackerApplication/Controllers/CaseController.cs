@@ -12,7 +12,7 @@ namespace BugTrackerApplication.Controllers
     {
         ProjectGateway pdb = new ProjectGateway();
         CaseGateway cdb = new CaseGateway();
-        UserGateway udb = new UserGateway();
+        //UserGateway udb = new UserGateway();
         BugGateway bdb = new BugGateway();
         private int id = (int)System.Web.HttpContext.Current.Session["userID"];
         public CaseController()
@@ -26,17 +26,19 @@ namespace BugTrackerApplication.Controllers
             return View(cdb.getCaseData(id));
         }
 
+        //Method to pass search value to CRUD
         [HttpPost]
         public ActionResult Index(string searchTerm)
         {
             List<Case> emptyList = new List<Case>();
             if (string.IsNullOrEmpty(searchTerm))
             {
-
-                emptyList = cdb.getOtherData().ToList();
+                //When search is empty returns all cases 
+                emptyList = cdb.getCaseData(id).ToList();
             }
             else
             {
+                //When search returns only the specified case 
                 emptyList = cdb.searchCaseData(searchTerm).ToList();
             }
 

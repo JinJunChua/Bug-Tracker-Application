@@ -9,8 +9,8 @@ namespace BugTrackerApplication.DAL
 {
     public class CaseGateway : CRUDGateway<Case>
     {
-        internal DbSet<Case> casedata = null;
-        private IEnumerable<Case> allCaseByName;
+        //internal DbSet<Case> casedata = null;
+        //private IEnumerable<Case> allCaseByName;
 
         public CaseGateway()
         {
@@ -49,22 +49,27 @@ namespace BugTrackerApplication.DAL
                 return null;
         }
 
+        //for prog's search
+        //for Cases searches by Programmer
         public IEnumerable<Case> searchCaseData(string searchTerm)
         {
-            // IEnumerable<Case> allCaseByName = null;
+            IEnumerable<Case> allCaseByName = null;
 
             if (string.IsNullOrEmpty(searchTerm))
             {
-
+                System.Diagnostics.Debug.WriteLine("if Condition ");
                 return allCaseByName = casedata.Where(x => x.status == searchTerm).ToList();
 
             }
             else
             {
-                //return allCaseByName = casedata.Where(x => x.status.StartsWith(searchTerm)).ToList(); 
+                System.Diagnostics.Debug.WriteLine("Else Condition ");
+
                 return allCaseByName = casedata.Where(x => x.status.ToLower().Contains(searchTerm.ToLower())).ToList();
             }
 
         }
+
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BugTrackerApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -10,6 +11,20 @@ namespace BugTrackerApplication.DAL
     {
         internal BugTrackerApplicationContext db = new BugTrackerApplicationContext();
         internal DbSet<T> data = null;
+
+        //for Project searches by PM
+        internal DbSet<Project> projectdata = null;
+        private IEnumerable<Project> allProjsByName;
+
+        //for cases searches by Programmer
+        internal DbSet<Case> casedata = null;
+        private IEnumerable<Case> allCasesByName;
+
+        //for cases searches by customer
+        internal DbSet<Bug> bugdata = null;
+        //for cases searches by customer
+        private IEnumerable<Bug> allBugsByName;
+
 
         public CRUDGateway()
         {
@@ -45,22 +60,52 @@ namespace BugTrackerApplication.DAL
         {
             return data.Find(id);
         }
-        
+
         public void Update(T obj)
         {
             db.Entry(obj).State = EntityState.Modified;
-            db.SaveChanges(); 
+            db.SaveChanges();
         }
-        
+
+        //For Customer search
+        public IEnumerable<Bug> searchbugData(string searchTerm)
+        {
+            return allBugsByName = bugdata.Where(x => x.projectName.ToLower().Contains(searchTerm.ToLower())).ToList();
+        }
 
 
-        //======== Fatgirl's codes
 
-        //public void Login(T obj)
-        //{
-        //    //List<T> newObj = data.ToList<T>();
-        //    //newObj.FindAll.
 
-        //}
+        //for Cases searches by Programmer
+        public IEnumerable<Case> searchCaseData(string searchTerm1)
+        {
+            return allCasesByName = casedata.Where(x => x.status.ToLower().Contains(searchTerm1.ToLower())).ToList();
+        }
+
+        public IEnumerable<Project> searchProjectData(string searchTerm)
+        {
+          
+           return allProjsByName = projectdata.Where(x => x.projectName.ToLower().Contains(searchTerm.ToLower())).ToList();
+
+          
+
+        }
+
     }
+
+
+
+
+
+
+
+    //======== Fatgirl's codes
+
+    //public void Login(T obj)
+    //{
+    //    //List<T> newObj = data.ToList<T>();
+    //    //newObj.FindAll.
+
+    //}
 }
+

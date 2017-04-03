@@ -30,7 +30,9 @@ namespace BugTrackerApplication.Controllers
             IEnumerable<Project> temp = pdb.getProjectData(id);
             return View(pdb.getProjectData(id));
         }
-        
+
+
+        //Method to pass search value to CRUD
         [HttpPost]
         public ActionResult Index(string searchTerm)
         {
@@ -38,11 +40,13 @@ namespace BugTrackerApplication.Controllers
             if (string.IsNullOrEmpty(searchTerm))
             {
 
+                //When search is empty returns all projects 
                 emptyList = pdb.getOtherData().ToList();
             }
             else
             {
-                emptyList = pdb.searchCaseData(searchTerm).ToList();
+                //When search returns only the specified project
+                emptyList = pdb.searchProjectData(searchTerm).ToList();
             }
 
             return View(emptyList);
